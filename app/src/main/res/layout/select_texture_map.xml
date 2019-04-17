@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:weightSum="5"
     android:orientation="vertical"
-android:background="@color/colorTextureBackground">
+    android:background="@color/colorTextureBackground">
 
 
     <ImageView
@@ -17,21 +17,20 @@ android:background="@color/colorTextureBackground">
         android:scaleType="fitXY"
         tools:srcCompat="@tools:sample/avatars" />
 
+
     <HorizontalScrollView
         android:id="@+id/scroller"
         android:layout_width="match_parent"
         android:layout_height="160dp"
         android:layout_weight="1"
-        android:background="@color/colorScrollview"
-        android:fillViewport="false">
+        android:background="@color/colorPrimaryDark"
+        android:fillViewport="false"
+        android:padding="20dp">
 
         <LinearLayout
             android:id="@+id/scrollbar_id"
             android:layout_width="match_parent"
             android:layout_height="120dp"
-
-            android:layout_alignParentBottom="false"
-            android:gravity="center_vertical"
             android:orientation="horizontal" />
     </HorizontalScrollView>
 

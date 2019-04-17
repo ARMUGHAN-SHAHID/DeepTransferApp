@@ -3,6 +3,7 @@ package com.example.mufarooq.deeppose;
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -20,12 +21,26 @@ public class StartScreen extends AppCompatActivity {
 //        stickAnimation = (AnimationDrawable) stickImage.getBackground();
 //        stickImage.setVisibility(0);
 
+        new CountDownTimer(3000,1000){
+
+            @Override
+            public void onTick(long millisUntilFinished) {
+
+            }
+
+            @Override
+            public void onFinish() {
+                Intent intent = new Intent(getApplicationContext(), CaptureImage.class);
+                startActivity(intent);
+                finish();
+            }
+        }.start();
+
     }
 
 
     public void StartScreenonClick(View view) {
-        Intent intent = new Intent(getApplicationContext(), CaptureImage.class);
-        startActivity(intent);
+
     }
 
 

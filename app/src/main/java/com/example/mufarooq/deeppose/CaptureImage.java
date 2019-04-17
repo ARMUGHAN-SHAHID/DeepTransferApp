@@ -9,6 +9,7 @@ import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.ImageView;
 
 import java.io.File;
@@ -23,6 +24,27 @@ public class CaptureImage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.camera_processing_screen);
 
+        LoadCamera();
+
+        findViewById(R.id.reloadCameraButton).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LoadCamera();
+            }
+        });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == takePictureRequestCode && resultCode == RESULT_OK){
+            Intent intent = new Intent(this, SelectTexture.class);
+            intent.putExtra("captured_photo_path",photoFile.getAbsolutePath() );
+            startActivity(intent);
+        }
+    }
+
+    private void LoadCamera(){
         //calling camera api to take photo
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 
@@ -45,22 +67,5 @@ public class CaptureImage extends AppCompatActivity {
             }
         }
 
-    }
-
-
-
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == takePictureRequestCode && resultCode == RESULT_OK){
-
-            Intent intent = new Intent(this, SelectTexture.class);
-            intent.putExtra("captured_photo_path",photoFile.getAbsolutePath() );
-            startActivity(intent);
-
-
-
-        }
     }
 }
